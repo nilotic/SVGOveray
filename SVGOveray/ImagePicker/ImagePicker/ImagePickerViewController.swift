@@ -141,7 +141,7 @@ final class ImagePickerViewController: UIViewController {
             paragraphStyle.maximumLineHeight = 20.0
             
             return [.font            : UIFont.systemFont(ofSize: 17.0, weight: .semibold),
-                    .foregroundColor : UIColor(named: "black") ?? #colorLiteral(red: 0.1254901961, green: 0.1411764706, blue: 0.1607843137, alpha: 1),
+                    .foregroundColor : UIColor(named: "title") ?? #colorLiteral(red: 0.1254901961, green: 0.1411764706, blue: 0.1607843137, alpha: 1),
                     .paragraphStyle  : paragraphStyle]
         }
         

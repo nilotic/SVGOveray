@@ -12,7 +12,7 @@ final class PhotoAssetCell: UICollectionViewCell {
     
     // MARK: - IBOutlet
     @IBOutlet private var imageView: UIImageView!
-    @IBOutlet private var checkerImageView: UIImageView!
+    @IBOutlet private var coverView: UIView!
     @IBOutlet private var activityIndicatorView: UIActivityIndicatorView!
 
 
@@ -28,10 +28,17 @@ final class PhotoAssetCell: UICollectionViewCell {
     
     
     // MARK: - View Life Cycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        layer.borderWidth = 3.0
+        layer.borderColor = UIColor.clear.cgColor
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
     
-        ImageDataManager.shared.cancelLoad(asset: asset)
+        ImageDataManager.shared.cancel(asset: asset)
     }
     
     
@@ -39,8 +46,8 @@ final class PhotoAssetCell: UICollectionViewCell {
     // MARK: - Function
     // MARK: Public
     func update(data: PhotoAsset) {
-        // Checker
-        checkerImageView.isHighlighted = data.isSelected
+        // Border
+        layer.borderColor = data.isSelected == false ? UIColor.clear.cgColor : (UIColor(named: "green") ?? #colorLiteral(red: 0.03921568627, green: 0.8588235294, blue: 0.7215686275, alpha: 1))?.cgColor
         
         
         // Image

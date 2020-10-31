@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import SwiftSVG
 
 final class ResourceCell: UICollectionViewCell {
     
     // MARK: - IBOutlet
-    @IBOutlet private var resourceImageView: UIImageView!
     @IBOutlet private var activityIndicatorView: UIActivityIndicatorView!
     
     
@@ -21,7 +21,8 @@ final class ResourceCell: UICollectionViewCell {
     
     
     // MARK: Private
-    private var imageURL: ImageURL? = nil
+    private var imageURL: ImageURL?   = nil
+    private weak var svgView: UIView? = nil
     
     
     
@@ -33,12 +34,13 @@ final class ResourceCell: UICollectionViewCell {
         layer.borderWidth  = 1.0
         layer.borderColor  = UIColor(named: "title")?.cgColor
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        resourceImageView.image = nil
-        ImageDataManager.shared.download(url: imageURL)
+        // Reset the imageView
+        svgView?.removeFromSuperview()
+        ImageDataManager.shared.cancel(url: imageURL)
     }
     
     
@@ -46,15 +48,22 @@ final class ResourceCell: UICollectionViewCell {
     // MARK: - Function
     // MARK: Public
     func update(data: URL) {
-        // Image
         imageURL = ImageURL(url: data, hash: hash)
         activityIndicatorView.startAnimating()
         
-        ImageDataManager.shared.download(url: imageURL) { [weak self] (url, image) in
+        ImageDataManager.shared.download(url: imageURL) { [weak self] (url, data) in
             DispatchQueue.main.async {
                 guard self?.imageURL == url else { return }
                 self?.activityIndicatorView.stopAnimating()
-                self?.resourceImageView.image = image
+                
+                guard let data = data, let bounds = self?.bounds else { return }
+                let view = UIView(svgData: data) { layer in
+                    layer.resizeToFit(CGRect(x: 0, y: 0, width: bounds.size.width - 20.0, height: bounds.size.height - 20.0))
+                }
+    
+                view.frame.origin = CGPoint(x: 10.0, y: 10.0)
+                self?.svgView = view
+                self?.addSubview(view)
             }
         }
     }

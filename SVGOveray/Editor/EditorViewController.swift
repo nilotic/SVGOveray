@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 final class EditorViewController: UIViewController {
 
@@ -59,10 +60,7 @@ final class EditorViewController: UIViewController {
             return
         }
         
-        DispatchQueue.main.async {
-            self.collectionView.contentOffset.x = 0
-            self.collectionView.reloadData()
-        }
+        DispatchQueue.main.async { self.collectionView.reloadData() }
     }
     
     
@@ -112,12 +110,12 @@ extension EditorViewController: UICollectionViewDelegate {
         activityIndicatorView.startAnimating()
         dataManager.imageURL = ImageURL(url: dataManager.imageURLs[indexPath.row], hash: hash)
         
-        ImageDataManager.shared.download(url: dataManager.imageURL) { [weak self] (url, image) in
+        ImageDataManager.shared.download(url: dataManager.imageURL) { [weak self] (url, data) in
             DispatchQueue.main.async {
                 self?.activityIndicatorView.stopAnimating()
         
                 guard self?.dataManager.imageURL == url else { return }
-                self?.imageView.image = image
+                
             }
         }
     }
@@ -137,7 +135,68 @@ extension EditorViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             guard indexPath.row < dataManager.imageURLs.count else { continue }
-            ImageDataManager.shared.cancelDownload(url: ImageURL(url: dataManager.imageURLs[indexPath.row], hash: hash))
+            ImageDataManager.shared.cancel(url: ImageURL(url: dataManager.imageURLs[indexPath.row], hash: hash))
+        }
+    }
+}
+
+
+
+// MARK: - ScrollView Delegate
+extension EditorViewController: UIScrollViewDelegate {
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+}
+
+
+
+// MARK: - ImagePickerViewController Delegate
+extension EditorViewController: ImagePickerViewControllerDelegate {
+    
+    func didSelect(assets: [PHAsset]) {
+        guard let asset = assets.first else { return }
+        dataManager.assets = assets
+        
+        DispatchQueue.main.async { self.activityIndicatorView.startAnimating() }
+        
+        ImageDataManager.shared.load(asset: ImageAsset(asset: asset, hash: hash), size: imageView.frame.size) { (asset, image, info) in
+            DispatchQueue.main.async {
+                self.activityIndicatorView.stopAnimating()
+                self.imageView.image = image
+            }
+        }
+    }
+}
+        
+
+
+// MARK: - Segue
+extension EditorViewController: SegueHandlerType {
+    
+    // MARK: Enum
+    enum SegueIdentifier: String {
+        case image = "ImagePickerSegue"
+    }
+    
+    
+    // MARK: Prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let segueIdentifier = segueIdentifier(with: segue) else {
+            log(.error, "Failed to get a segueIdentifier.")
+            return
+        }
+        
+        switch segueIdentifier {
+        case .image:
+            guard let viewController = (segue.destination as? UINavigationController)?.children.first as? ImagePickerViewController else {
+                log(.error, "Failed to get a ImagePickerViewController.")
+                return
+            }
+            
+            viewController.dataManager.selectedAssets = dataManager.assets
+            viewController.delegate = self
         }
     }
 }

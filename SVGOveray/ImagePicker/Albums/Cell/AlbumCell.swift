@@ -45,7 +45,7 @@ final class AlbumCell: UITableViewCell {
         super.prepareForReuse()
         
         checkImageView.isHighlighted = false
-        ImageDataManager.shared.cancelLoad(asset: asset)
+        ImageDataManager.shared.cancel(asset: asset)
     }
     
     

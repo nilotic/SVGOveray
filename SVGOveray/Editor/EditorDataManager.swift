@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Photos
 
 // MARK: - Define
 struct EditorNotificationName {
@@ -18,7 +19,7 @@ final class EditorDataManager: NSObject {
     // MARK: Public
     private(set) var imageURLs = [URL]()
     var imageURL: ImageURL? = nil
-    
+    var assets = [PHAsset]()
     
     
     // MARK: - Function

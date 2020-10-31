@@ -20,7 +20,7 @@ final class ImageDataManager: NSObject {
     
     // MARK: - Value
     // MARK: Private
-    private lazy var imageCache = NSCache<NSString, UIImage>()
+    private lazy var imageCache = NSCache<NSString, NSData>()
     
     private lazy var imageManager: PHCachingImageManager = {
         let imageManager = PHCachingImageManager()
@@ -50,7 +50,7 @@ final class ImageDataManager: NSObject {
     
     // MARK: - Function
     // MARK: Public
-    func download(url: ImageURL?, completion: ((_ url: ImageURL?, _ image: UIImage?) -> Void)? = nil) {
+    func download(url: ImageURL?, completion: ((_ url: ImageURL?, _ data: Data?) -> Void)? = nil) {
         guard let imageURL = url else {
             completion?(url, nil)
             return
@@ -58,8 +58,8 @@ final class ImageDataManager: NSObject {
         
         accessQueue.async {
             // If the cached image exist, return the image
-            if let cachedImage = self.imageCache.object(forKey: imageURL.absoluteString) {
-                completion?(imageURL, cachedImage)
+            if let cache = self.imageCache.object(forKey: imageURL.absoluteString) {
+                completion?(imageURL, cache as Data)
                 return
             }
             
@@ -67,7 +67,7 @@ final class ImageDataManager: NSObject {
             // Download image
             let task = self.downloadSession.dataTask(with: URLRequest(url: imageURL)) { (data, response, error) in
                 guard let data = data, error == nil else { return }
-                let image = (response?.url?.lastPathComponent.lowercased().hasSuffix("gif") == true ? GIF.convert(data: data) : UIImage(data: data))
+                let image = (response?.url?.lastPathComponent.lowercased().hasSuffix("gif") == true ? GIF.convert(data: data) : data
                 
                 // Cache
                 self.accessQueue.async {
@@ -75,7 +75,7 @@ final class ImageDataManager: NSObject {
                         self.imageCache.setObject(image, forKey: urlString as NSString)
                     }
                     
-                    completion?(imageURL, image)
+                    completion?(imageURL, data)
                     self.downloadTasks.removeValue(forKey: imageURL)
                 }
             }
@@ -134,14 +134,14 @@ final class ImageDataManager: NSObject {
         }
     }
     
-    func cancelLoad(asset: ImageAsset?) {
+    func cancel(asset: ImageAsset?) {
         accessQueue.async {
             guard let asset = asset, let imageRequestID = self.loadTasks[asset] else { return }
             self.imageManager.cancelImageRequest(imageRequestID)
         }
     }
     
-    func cancelDownload(url: ImageURL?) {
+    func cancel(url: ImageURL?) {
         accessQueue.async {
             guard let url = url else { return }
             self.downloadTasks[url]?.cancel()
@@ -149,7 +149,7 @@ final class ImageDataManager: NSObject {
         }
     }
     
-    func cancelDownload(urls: [ImageURL]) {
+    func cancel(urls: [ImageURL]) {
         guard urls.isEmpty == false else { return }
         
         accessQueue.async {

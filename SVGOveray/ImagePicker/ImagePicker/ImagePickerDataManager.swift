@@ -22,8 +22,8 @@ final class ImagePickerDataManager: NSObject {
     private(set) var images = [Asset]()
     
     var selectedAssets = [PHAsset]()
-    var selectionType: SelectionType = .multiple
-    var maximumCount: UInt = 3
+    var selectionType: SelectionType = .single
+    var maximumCount: UInt = 1
     
     
     // MARK: Private
