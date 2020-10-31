@@ -10,7 +10,7 @@ import UIKit
 final class ResourceCell: UICollectionViewCell {
     
     // MARK: - IBOutlet
-    @IBOutlet private var imageView: UIImageView!
+    @IBOutlet var imageView: UIImageView!
     @IBOutlet private var activityIndicatorView: UIActivityIndicatorView!
     
     
@@ -52,9 +52,9 @@ final class ResourceCell: UICollectionViewCell {
         
         ImageDataManager.shared.download(url: imageURL) { [weak self] (url, image) in
             DispatchQueue.main.async {
-                guard self?.imageURL == url, let imageView = self?.imageView else { return }
+                guard self?.imageURL == url else { return }
                 self?.activityIndicatorView.stopAnimating()
-                imageView.image = image?.resized(size: imageView.frame.size)
+                self?.imageView.image = image
             }
         }
     }

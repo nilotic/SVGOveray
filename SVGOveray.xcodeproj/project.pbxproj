@@ -140,8 +140,10 @@
 		B7994DE8254D36D700D57A56 /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994DE6254D36D700D57A56 /* ResourceCell.swift */; };
 		B7994E5C254D70C500D57A56 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994E5B254D70C500D57A56 /* StyleButton.swift */; };
 		B7994E5D254D70C500D57A56 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994E5B254D70C500D57A56 /* StyleButton.swift */; };
-		B7994E86254D85F500D57A56 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994E85254D85F500D57A56 /* UIImageViewExtension.swift */; };
-		B7994E87254D85F500D57A56 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994E85254D85F500D57A56 /* UIImageViewExtension.swift */; };
+		B7994E90254D881300D57A56 /* StickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7994E8F254D881300D57A56 /* StickerView.xib */; };
+		B7994E91254D881300D57A56 /* StickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7994E8F254D881300D57A56 /* StickerView.xib */; };
+		B7994E99254D881C00D57A56 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994E98254D881C00D57A56 /* StickerView.swift */; };
+		B7994E9A254D881C00D57A56 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994E98254D881C00D57A56 /* StickerView.swift */; };
 		C279FBB66091307F0258DD7E /* Pods_SVGOveray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC7CC4C75B169967165E236 /* Pods_SVGOveray.framework */; };
 /* End PBXBuildFile section */
 
@@ -232,7 +234,8 @@
 		B7994DD8254D364300D57A56 /* ResourceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceResponse.swift; sourceTree = "<group>"; };
 		B7994DE6254D36D700D57A56 /* ResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCell.swift; sourceTree = "<group>"; };
 		B7994E5B254D70C500D57A56 /* StyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleButton.swift; sourceTree = "<group>"; };
-		B7994E85254D85F500D57A56 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		B7994E8F254D881300D57A56 /* StickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StickerView.xib; sourceTree = "<group>"; };
+		B7994E98254D881C00D57A56 /* StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
 		D7057E0FC1B3962DC9A04DA0 /* Pods-SVGOverayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVGOverayUITests.release.xcconfig"; path = "Target Support Files/Pods-SVGOverayUITests/Pods-SVGOverayUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FCA8BB9CD7AC2B1CAFC4EBF7 /* Pods-SVGOverayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVGOverayTests.debug.xcconfig"; path = "Target Support Files/Pods-SVGOverayTests/Pods-SVGOverayTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -351,6 +354,7 @@
 				B7994BBC254D1C8D00D57A56 /* Main.storyboard */,
 				B7994D61254D2DC300D57A56 /* EditorViewController.swift */,
 				B7994DD0254D34C100D57A56 /* EditorDataManager.swift */,
+				B7994E8E254D880800D57A56 /* StickerView */,
 				B7994DE5254D36AC00D57A56 /* Cell */,
 				B7994DD7254D361F00D57A56 /* Model */,
 			);
@@ -536,7 +540,6 @@
 			isa = PBXGroup;
 			children = (
 				B7994DC3254D30A900D57A56 /* UIViewExtension.swift */,
-				B7994E85254D85F500D57A56 /* UIImageViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -573,6 +576,15 @@
 				5A3E55A07F3198285F32242A /* Pods_SVGOverayUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7994E8E254D880800D57A56 /* StickerView */ = {
+			isa = PBXGroup;
+			children = (
+				B7994E8F254D881300D57A56 /* StickerView.xib */,
+				B7994E98254D881C00D57A56 /* StickerView.swift */,
+			);
+			path = StickerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -684,6 +696,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7994E90254D881300D57A56 /* StickerView.xib in Resources */,
 				B7994BC3254D1C8E00D57A56 /* LaunchScreen.storyboard in Resources */,
 				B7994BC0254D1C8E00D57A56 /* Assets.xcassets in Resources */,
 				B7994CB4254D251F00D57A56 /* ImagePicker.storyboard in Resources */,
@@ -706,6 +719,7 @@
 				B7994CB5254D251F00D57A56 /* ImagePicker.storyboard in Resources */,
 				B7994D9C254D300B00D57A56 /* Drawing.storyboard in Resources */,
 				B7994D95254D2EE300D57A56 /* Assets.xcassets in Resources */,
+				B7994E91254D881300D57A56 /* StickerView.xib in Resources */,
 				B7994D8E254D2E4E00D57A56 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -837,13 +851,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7994E86254D85F500D57A56 /* UIImageViewExtension.swift in Sources */,
 				B7994BFA254D1D1600D57A56 /* UITableViewAnimationSet.swift in Sources */,
 				B7994CD2254D25DF00D57A56 /* CameraAssetCell.swift in Sources */,
 				B7994C94254D209400D57A56 /* Logger.swift in Sources */,
 				B7994D62254D2DC300D57A56 /* EditorViewController.swift in Sources */,
 				B7994CED254D267F00D57A56 /* PhotoAsset.swift in Sources */,
 				B7994C6A254D1FD900D57A56 /* HTTPStatusCode.swift in Sources */,
+				B7994E99254D881C00D57A56 /* StickerView.swift in Sources */,
 				B7994C11254D1DC500D57A56 /* ImageDataManager.swift in Sources */,
 				B7994C9B254D20BE00D57A56 /* SegueHandlerType.swift in Sources */,
 				B7994C87254D205F00D57A56 /* NetworkManager.swift in Sources */,
@@ -930,6 +944,7 @@
 				B7994CE2254D263600D57A56 /* Asset.swift in Sources */,
 				B7994DC6254D30A900D57A56 /* UIViewExtension.swift in Sources */,
 				B7994C89254D205F00D57A56 /* NetworkManager.swift in Sources */,
+				B7994E9A254D881C00D57A56 /* StickerView.swift in Sources */,
 				B7994C6C254D1FD900D57A56 /* HTTPStatusCode.swift in Sources */,
 				B7994D27254D27C300D57A56 /* Album.swift in Sources */,
 				B7994C02254D1D3500D57A56 /* ToastView.swift in Sources */,
@@ -948,7 +963,6 @@
 				B7994D39254D27F000D57A56 /* AllPhotosAlbum.swift in Sources */,
 				B7994D57254D2B8600D57A56 /* LocaleManager.swift in Sources */,
 				B7994C0B254D1D6A00D57A56 /* Toast.swift in Sources */,
-				B7994E87254D85F500D57A56 /* UIImageViewExtension.swift in Sources */,
 				B7994CD3254D25DF00D57A56 /* CameraAssetCell.swift in Sources */,
 				B7994D04254D272200D57A56 /* AlbumsDataManager.swift in Sources */,
 				B7994CAC254D226C00D57A56 /* ImageAsset.swift in Sources */,

@@ -12,6 +12,7 @@ final class EditorViewController: UIViewController {
 
     // MARK: - IBOutlet
     @IBOutlet private var pencilBarButtonItem: UIBarButtonItem!
+    @IBOutlet private var contentView: UIView!
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var collectionView: UICollectionView!
     @IBOutlet private var activityIndicatorView: UIActivityIndicatorView!
@@ -20,7 +21,9 @@ final class EditorViewController: UIViewController {
     
     // MARK: - Value
     // MARK: Private
-    private let dataManager = EditorDataManager()
+    private let dataManager  = EditorDataManager()
+    private var stickerViews = [Int: StickerView]()
+    
     
     
     // MARK: - View Life Cycle
@@ -65,6 +68,10 @@ final class EditorViewController: UIViewController {
     
     
     // MARK: - Event
+    @IBAction private func removeButtonTouchUpInside(_ sender: UIButton) {
+        stickerViews[sender.tag]?.removeFromSuperview()
+        stickerViews.removeValue(forKey: sender.tag)
+    }
 }
 
 
@@ -105,19 +112,22 @@ extension EditorViewController: UICollectionViewDelegateFlowLayout {
 extension EditorViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard indexPath.row < dataManager.imageURLs.count else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ResourceCell,
+              let stickerView = UINib(nibName: StickerView.identifier, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? StickerView else { return }
         
-        activityIndicatorView.startAnimating()
-        dataManager.imageURL = ImageURL(url: dataManager.imageURLs[indexPath.row], hash: hash)
+        // Set the image
+        stickerView.imageView.image = cell.imageView.image
+        stickerView.frame = CGRect(x: (contentView.frame.width - cell.frame.width) / 2.0, y: (contentView.frame.height - cell.frame.height) / 2.0, width: cell.frame.width, height: cell.frame.height)
         
-        ImageDataManager.shared.download(url: dataManager.imageURL) { [weak self] (url, data) in
-            DispatchQueue.main.async {
-                self?.activityIndicatorView.stopAnimating()
+        // Set the deleteButton
+        stickerView.deleteButton.addTarget(self, action: #selector(removeButtonTouchUpInside(_:)), for: .touchUpInside)
+        stickerView.deleteButton.tag = stickerView.hash
+            
+        // Cache
+        stickerViews[stickerView.hash] = stickerView
         
-                guard self?.dataManager.imageURL == url else { return }
-                
-            }
-        }
+        // Add the stickerView
+        contentView.addSubview(stickerView)
     }
 }
 
@@ -161,6 +171,7 @@ extension EditorViewController: ImagePickerViewControllerDelegate {
         
         DispatchQueue.main.async { self.activityIndicatorView.startAnimating() }
         
+        // Load the selected asset
         ImageDataManager.shared.load(asset: ImageAsset(asset: asset, hash: hash), size: imageView.frame.size) { (asset, image, info) in
             DispatchQueue.main.async {
                 self.activityIndicatorView.stopAnimating()
