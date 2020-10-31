@@ -16,6 +16,10 @@ final class ResourceCell: UICollectionViewCell {
     
     
     // MARK: - Value
+    // MARK: Public
+    static let identifier = "ResourceCell"
+    
+    
     // MARK: Private
     private var imageURL: ImageURL? = nil
     
@@ -26,8 +30,8 @@ final class ResourceCell: UICollectionViewCell {
         super.awakeFromNib()
         
         layer.cornerRadius = 10.0
-        layer.borderWidth = 1.0
-        layer.borderColor = UIColor(named: "title")?.cgColor
+        layer.borderWidth  = 1.0
+        layer.borderColor  = UIColor(named: "title")?.cgColor
     }
     
     override func prepareForReuse() {

@@ -40,7 +40,7 @@ final class NetworkManager: NSObject {
             }
             
             self.handle(response: response)
-            completion(error == nil ? .success(response) : .failure(NetworkError(data: response)))
+            completion(response.statusCode.isSuccess == true ? .success(response) : .failure(NetworkError(data: response)))
  
             urlSession.finishTasksAndInvalidate()
         }).resume()
@@ -67,7 +67,7 @@ final class NetworkManager: NSObject {
             }
             
             self.handle(response: response)
-            completion(error == nil ? .success(response) : .failure(NetworkError(data: response)))
+            completion(response.statusCode.isSuccess == true  ? .success(response) : .failure(NetworkError(data: response)))
  
             urlSession.finishTasksAndInvalidate()
         }).resume()

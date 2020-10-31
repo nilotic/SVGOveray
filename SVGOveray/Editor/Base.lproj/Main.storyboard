@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MUR-o5-c5N">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -28,20 +28,42 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Gn7-Eh-pOa"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="20" id="cWK-Ru-Qrr">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="20" id="cWK-Ru-Qrr">
                                     <size key="itemSize" width="128" height="128"/>
+                                    <size key="estimatedItemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="40" minY="40" maxX="40" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="a49-LL-Dm0">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="ResourceCell" reuseIdentifier="ResourceCell" id="a49-LL-Dm0" customClass="ResourceCell" customModule="SVGOveray" customModuleProvider="target">
                                         <rect key="frame" x="40" y="40" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8ik-m0-4f9">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3fm-Sx-JKt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BRm-jt-Y77">
+                                                    <rect key="frame" x="54" y="54" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="BRm-jt-Y77" firstAttribute="centerY" secondItem="8ik-m0-4f9" secondAttribute="centerY" id="1uS-c3-jvT"/>
+                                                <constraint firstItem="3fm-Sx-JKt" firstAttribute="top" secondItem="8ik-m0-4f9" secondAttribute="top" id="3CK-iu-h8L"/>
+                                                <constraint firstAttribute="bottom" secondItem="3fm-Sx-JKt" secondAttribute="bottom" id="Bve-ic-C3T"/>
+                                                <constraint firstAttribute="trailing" secondItem="3fm-Sx-JKt" secondAttribute="trailing" id="LvI-RW-3VL"/>
+                                                <constraint firstItem="3fm-Sx-JKt" firstAttribute="leading" secondItem="8ik-m0-4f9" secondAttribute="leading" id="SRy-M1-VCF"/>
+                                                <constraint firstItem="BRm-jt-Y77" firstAttribute="centerX" secondItem="8ik-m0-4f9" secondAttribute="centerX" id="x1H-jG-Vqv"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="128" height="128"/>
+                                        <connections>
+                                            <outlet property="activityIndicatorView" destination="BRm-jt-Y77" id="bU9-ZH-sbC"/>
+                                            <outlet property="resourceImageView" destination="3fm-Sx-JKt" id="4Ox-gF-EeI"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -93,6 +115,8 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="wLK-ox-nga" id="8Wm-rL-SbY"/>
+                        <outlet property="collectionView" destination="Zcw-A9-j2Q" id="tRv-DA-lQH"/>
+                        <outlet property="imageView" destination="aJk-c0-CSs" id="ud2-cZ-uoz"/>
                         <outlet property="pencilBarButtonItem" destination="rGG-17-Pyf" id="obi-8Q-twG"/>
                     </connections>
                 </viewController>
@@ -113,7 +137,7 @@
         <!--Navigation Controller-->
         <scene sceneID="7eK-1v-tWp">
             <objects>
-                <navigationController storyboardIdentifier="EditorNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MUR-o5-c5N" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="EditorNavigationController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MUR-o5-c5N" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MmF-Ng-PEU">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

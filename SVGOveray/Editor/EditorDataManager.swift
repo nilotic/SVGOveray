@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Define
 struct EditorNotificationName {
-    static let editor = Notification.Name("EditorNotification")
+    static let resource = Notification.Name("EditorResourceNotification")
 }
 
 final class EditorDataManager: NSObject {
@@ -17,6 +17,8 @@ final class EditorDataManager: NSObject {
     // MARK: - Value
     // MARK: Public
     private(set) var imageURLs = [URL]()
+    var imageURL: ImageURL? = nil
+    
     
     
     // MARK: - Function
@@ -31,7 +33,7 @@ final class EditorDataManager: NSObject {
             defer {
                 DispatchQueue.main.async {
                     self.imageURLs = imageURLs
-                    NotificationCenter.default.post(name: EditorNotificationName.editor, object: error)
+                    NotificationCenter.default.post(name: EditorNotificationName.resource, object: error)
                 }
             }
             
