@@ -14,12 +14,12 @@ struct ResourceResponse {
 extension ResourceResponse: Decodable {
    
     private enum Key: String, CodingKey {
-        case imageURLs
+        case urls
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Key.self)
         
-        do { imageURLs = try container.decode([URL].self, forKey: .imageURLs) } catch { imageURLs = [] }
+        do { imageURLs = try container.decode([URL].self, forKey: .urls) } catch { imageURLs = [] }
     }
 }

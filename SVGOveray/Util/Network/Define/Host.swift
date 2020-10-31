@@ -28,7 +28,7 @@ extension Host {
         case .svgOveray(let server):  return server.rawValue
         
     #else
-        case .svgOveray(_):           return "https://github.com"
+        case .svgOveray(_):           return "https://raw.githubusercontent.com"
     #endif
         }
     }
@@ -65,14 +65,14 @@ extension Host.Server {
     var rawValue: String {
         switch self {
         #if DEBUG
-        case .development: return "https://github.com"
-        case .stage:       return "https://github.com"
-        case .production:  return "https://github.com"
+        case .development: return "https://raw.githubusercontent.com"
+        case .stage:       return "https://raw.githubusercontent.com"
+        case .production:  return "https://raw.githubusercontent.com"
         
         #else
-        case .development: return "https://github.com"
-        case .stage:       return "https://github.com"
-        case .production:  return "https://github.com"
+        case .development: return "https://raw.githubusercontent.com"
+        case .stage:       return "https://raw.githubusercontent.com"
+        case .production:  return "https://raw.githubusercontent.com"
         #endif
         }
     }

@@ -15,7 +15,7 @@ extension API {
     
     var url: URL {
         switch self {
-        case .imageURLs:    return URL(string: "\(Host.svgOveray(server: server).rawValue)/SVGOveray/blob/master/svgs/svgs.json")!
+        case .imageURLs:    return URL(string: "\(Host.svgOveray(server: server).rawValue)/nilotic/SVGOveray/master/svgs/svgURLs.json")!
         }
     }
 }
