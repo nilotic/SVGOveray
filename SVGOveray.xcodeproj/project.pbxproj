@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152E1DF9A200257BDE90C17E /* Pods_SVGOverayTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 435D516CBF4A4C4C166403AD /* Pods_SVGOverayTests.framework */; };
+		36AC801D464F30E018B363E8 /* Pods_SVGOverayUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3E55A07F3198285F32242A /* Pods_SVGOverayUITests.framework */; };
 		B7994BB7254D1C8D00D57A56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994BB6254D1C8D00D57A56 /* AppDelegate.swift */; };
 		B7994BB9254D1C8D00D57A56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994BB8254D1C8D00D57A56 /* SceneDelegate.swift */; };
 		B7994BBE254D1C8D00D57A56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7994BBC254D1C8D00D57A56 /* Main.storyboard */; };
@@ -136,9 +138,11 @@
 		B7994DDB254D364300D57A56 /* ResourceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994DD8254D364300D57A56 /* ResourceResponse.swift */; };
 		B7994DE7254D36D700D57A56 /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994DE6254D36D700D57A56 /* ResourceCell.swift */; };
 		B7994DE8254D36D700D57A56 /* ResourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994DE6254D36D700D57A56 /* ResourceCell.swift */; };
-		B7994E02254D526C00D57A56 /* SwiftSVG in Frameworks */ = {isa = PBXBuildFile; productRef = B7994E01254D526C00D57A56 /* SwiftSVG */; };
 		B7994E5C254D70C500D57A56 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994E5B254D70C500D57A56 /* StyleButton.swift */; };
 		B7994E5D254D70C500D57A56 /* StyleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994E5B254D70C500D57A56 /* StyleButton.swift */; };
+		B7994E86254D85F500D57A56 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994E85254D85F500D57A56 /* UIImageViewExtension.swift */; };
+		B7994E87254D85F500D57A56 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994E85254D85F500D57A56 /* UIImageViewExtension.swift */; };
+		C279FBB66091307F0258DD7E /* Pods_SVGOveray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC7CC4C75B169967165E236 /* Pods_SVGOveray.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +163,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3147FF3653F3284E4178E74B /* Pods-SVGOverayUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVGOverayUITests.debug.xcconfig"; path = "Target Support Files/Pods-SVGOverayUITests/Pods-SVGOverayUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3BC7CC4C75B169967165E236 /* Pods_SVGOveray.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SVGOveray.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		435D516CBF4A4C4C166403AD /* Pods_SVGOverayTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SVGOverayTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A3E55A07F3198285F32242A /* Pods_SVGOverayUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SVGOverayUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		67FFB34EB2E01BF759CAAF19 /* Pods-SVGOveray.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVGOveray.release.xcconfig"; path = "Target Support Files/Pods-SVGOveray/Pods-SVGOveray.release.xcconfig"; sourceTree = "<group>"; };
+		6D021C74349504B2B7D8ABA4 /* Pods-SVGOverayTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVGOverayTests.release.xcconfig"; path = "Target Support Files/Pods-SVGOverayTests/Pods-SVGOverayTests.release.xcconfig"; sourceTree = "<group>"; };
+		A3853C9CB43884D5F4713016 /* Pods-SVGOveray.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVGOveray.debug.xcconfig"; path = "Target Support Files/Pods-SVGOveray/Pods-SVGOveray.debug.xcconfig"; sourceTree = "<group>"; };
 		B7994BB3254D1C8D00D57A56 /* SVGOveray.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SVGOveray.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7994BB6254D1C8D00D57A56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7994BB8254D1C8D00D57A56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +232,9 @@
 		B7994DD8254D364300D57A56 /* ResourceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceResponse.swift; sourceTree = "<group>"; };
 		B7994DE6254D36D700D57A56 /* ResourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceCell.swift; sourceTree = "<group>"; };
 		B7994E5B254D70C500D57A56 /* StyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleButton.swift; sourceTree = "<group>"; };
+		B7994E85254D85F500D57A56 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		D7057E0FC1B3962DC9A04DA0 /* Pods-SVGOverayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVGOverayUITests.release.xcconfig"; path = "Target Support Files/Pods-SVGOverayUITests/Pods-SVGOverayUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FCA8BB9CD7AC2B1CAFC4EBF7 /* Pods-SVGOverayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVGOverayTests.debug.xcconfig"; path = "Target Support Files/Pods-SVGOverayTests/Pods-SVGOverayTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,7 +242,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7994E02254D526C00D57A56 /* SwiftSVG in Frameworks */,
+				C279FBB66091307F0258DD7E /* Pods_SVGOveray.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +250,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				152E1DF9A200257BDE90C17E /* Pods_SVGOverayTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,12 +258,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36AC801D464F30E018B363E8 /* Pods_SVGOverayUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1980CA923D1FC92519AEE2F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A3853C9CB43884D5F4713016 /* Pods-SVGOveray.debug.xcconfig */,
+				67FFB34EB2E01BF759CAAF19 /* Pods-SVGOveray.release.xcconfig */,
+				FCA8BB9CD7AC2B1CAFC4EBF7 /* Pods-SVGOverayTests.debug.xcconfig */,
+				6D021C74349504B2B7D8ABA4 /* Pods-SVGOverayTests.release.xcconfig */,
+				3147FF3653F3284E4178E74B /* Pods-SVGOverayUITests.debug.xcconfig */,
+				D7057E0FC1B3962DC9A04DA0 /* Pods-SVGOverayUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B7994BAA254D1C8D00D57A56 = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +285,8 @@
 				B7994BCC254D1C8E00D57A56 /* SVGOverayTests */,
 				B7994BD7254D1C8E00D57A56 /* SVGOverayUITests */,
 				B7994BB4254D1C8D00D57A56 /* Products */,
+				B7994E6F254D82DC00D57A56 /* Frameworks */,
+				1980CA923D1FC92519AEE2F7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -505,6 +536,7 @@
 			isa = PBXGroup;
 			children = (
 				B7994DC3254D30A900D57A56 /* UIViewExtension.swift */,
+				B7994E85254D85F500D57A56 /* UIImageViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -533,6 +565,16 @@
 			path = UIComponent;
 			sourceTree = "<group>";
 		};
+		B7994E6F254D82DC00D57A56 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3BC7CC4C75B169967165E236 /* Pods_SVGOveray.framework */,
+				435D516CBF4A4C4C166403AD /* Pods_SVGOverayTests.framework */,
+				5A3E55A07F3198285F32242A /* Pods_SVGOverayUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -540,18 +582,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7994BDD254D1C8E00D57A56 /* Build configuration list for PBXNativeTarget "SVGOveray" */;
 			buildPhases = (
+				3E0F0929FB69B105DFA4D007 /* [CP] Check Pods Manifest.lock */,
 				B7994BAF254D1C8D00D57A56 /* Sources */,
 				B7994BB0254D1C8D00D57A56 /* Frameworks */,
 				B7994BB1254D1C8D00D57A56 /* Resources */,
+				657C769590545526D6AAB220 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SVGOveray;
-			packageProductDependencies = (
-				B7994E01254D526C00D57A56 /* SwiftSVG */,
-			);
 			productName = SVGOveray;
 			productReference = B7994BB3254D1C8D00D57A56 /* SVGOveray.app */;
 			productType = "com.apple.product-type.application";
@@ -560,9 +601,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7994BE0254D1C8E00D57A56 /* Build configuration list for PBXNativeTarget "SVGOverayTests" */;
 			buildPhases = (
+				C837CB370A9FF56D4B370E60 /* [CP] Check Pods Manifest.lock */,
 				B7994BC5254D1C8E00D57A56 /* Sources */,
 				B7994BC6254D1C8E00D57A56 /* Frameworks */,
 				B7994BC7254D1C8E00D57A56 /* Resources */,
+				ABF446D8E3BD90A8B8DAA68F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -578,9 +621,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7994BE3254D1C8E00D57A56 /* Build configuration list for PBXNativeTarget "SVGOverayUITests" */;
 			buildPhases = (
+				0B970B8157E8B7F0B1941584 /* [CP] Check Pods Manifest.lock */,
 				B7994BD0254D1C8E00D57A56 /* Sources */,
 				B7994BD1254D1C8E00D57A56 /* Frameworks */,
 				B7994BD2254D1C8E00D57A56 /* Resources */,
+				ECDA20B57EE8444086E97969 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -623,9 +668,6 @@
 				Base,
 			);
 			mainGroup = B7994BAA254D1C8D00D57A56;
-			packageReferences = (
-				B7994E00254D526C00D57A56 /* XCRemoteSwiftPackageReference "SwiftSVG" */,
-			);
 			productRefGroup = B7994BB4254D1C8D00D57A56 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -670,11 +712,132 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0B970B8157E8B7F0B1941584 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SVGOverayUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E0F0929FB69B105DFA4D007 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SVGOveray-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		657C769590545526D6AAB220 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SVGOveray/Pods-SVGOveray-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SVGOveray/Pods-SVGOveray-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SVGOveray/Pods-SVGOveray-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABF446D8E3BD90A8B8DAA68F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SVGOverayTests/Pods-SVGOverayTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SVGOverayTests/Pods-SVGOverayTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SVGOverayTests/Pods-SVGOverayTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C837CB370A9FF56D4B370E60 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SVGOverayTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECDA20B57EE8444086E97969 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SVGOverayUITests/Pods-SVGOverayUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SVGOverayUITests/Pods-SVGOverayUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SVGOverayUITests/Pods-SVGOverayUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B7994BAF254D1C8D00D57A56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7994E86254D85F500D57A56 /* UIImageViewExtension.swift in Sources */,
 				B7994BFA254D1D1600D57A56 /* UITableViewAnimationSet.swift in Sources */,
 				B7994CD2254D25DF00D57A56 /* CameraAssetCell.swift in Sources */,
 				B7994C94254D209400D57A56 /* Logger.swift in Sources */,
@@ -785,6 +948,7 @@
 				B7994D39254D27F000D57A56 /* AllPhotosAlbum.swift in Sources */,
 				B7994D57254D2B8600D57A56 /* LocaleManager.swift in Sources */,
 				B7994C0B254D1D6A00D57A56 /* Toast.swift in Sources */,
+				B7994E87254D85F500D57A56 /* UIImageViewExtension.swift in Sources */,
 				B7994CD3254D25DF00D57A56 /* CameraAssetCell.swift in Sources */,
 				B7994D04254D272200D57A56 /* AlbumsDataManager.swift in Sources */,
 				B7994CAC254D226C00D57A56 /* ImageAsset.swift in Sources */,
@@ -967,6 +1131,7 @@
 		};
 		B7994BDE254D1C8E00D57A56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3853C9CB43884D5F4713016 /* Pods-SVGOveray.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -988,6 +1153,7 @@
 		};
 		B7994BDF254D1C8E00D57A56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67FFB34EB2E01BF759CAAF19 /* Pods-SVGOveray.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1009,6 +1175,7 @@
 		};
 		B7994BE1254D1C8E00D57A56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCA8BB9CD7AC2B1CAFC4EBF7 /* Pods-SVGOverayTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1030,6 +1197,7 @@
 		};
 		B7994BE2254D1C8E00D57A56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D021C74349504B2B7D8ABA4 /* Pods-SVGOverayTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1051,6 +1219,7 @@
 		};
 		B7994BE4254D1C8E00D57A56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3147FF3653F3284E4178E74B /* Pods-SVGOverayUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1070,6 +1239,7 @@
 		};
 		B7994BE5254D1C8E00D57A56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7057E0FC1B3962DC9A04DA0 /* Pods-SVGOverayUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1127,25 +1297,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B7994E00254D526C00D57A56 /* XCRemoteSwiftPackageReference "SwiftSVG" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mchoe/SwiftSVG.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B7994E01254D526C00D57A56 /* SwiftSVG */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B7994E00254D526C00D57A56 /* XCRemoteSwiftPackageReference "SwiftSVG" */;
-			productName = SwiftSVG;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B7994BAB254D1C8D00D57A56 /* Project object */;
 }

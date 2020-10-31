@@ -6,11 +6,11 @@
 //
 
 import UIKit
-import SwiftSVG
 
 final class ResourceCell: UICollectionViewCell {
     
     // MARK: - IBOutlet
+    @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var activityIndicatorView: UIActivityIndicatorView!
     
     
@@ -22,7 +22,6 @@ final class ResourceCell: UICollectionViewCell {
     
     // MARK: Private
     private var imageURL: ImageURL?   = nil
-    private weak var svgView: UIView? = nil
     
     
     
@@ -39,7 +38,7 @@ final class ResourceCell: UICollectionViewCell {
         super.prepareForReuse()
         
         // Reset the imageView
-        svgView?.removeFromSuperview()
+        imageView.image = nil
         ImageDataManager.shared.cancel(url: imageURL)
     }
     
@@ -51,19 +50,11 @@ final class ResourceCell: UICollectionViewCell {
         imageURL = ImageURL(url: data, hash: hash)
         activityIndicatorView.startAnimating()
         
-        ImageDataManager.shared.download(url: imageURL) { [weak self] (url, data) in
+        ImageDataManager.shared.download(url: imageURL) { [weak self] (url, image) in
             DispatchQueue.main.async {
-                guard self?.imageURL == url else { return }
+                guard self?.imageURL == url, let imageView = self?.imageView else { return }
                 self?.activityIndicatorView.stopAnimating()
-                
-                guard let data = data, let bounds = self?.bounds else { return }
-                let view = UIView(svgData: data) { layer in
-                    layer.resizeToFit(CGRect(x: 0, y: 0, width: bounds.size.width - 20.0, height: bounds.size.height - 20.0))
-                }
-    
-                view.frame.origin = CGPoint(x: 10.0, y: 10.0)
-                self?.svgView = view
-                self?.addSubview(view)
+                imageView.image = image?.resized(size: imageView.frame.size)
             }
         }
     }

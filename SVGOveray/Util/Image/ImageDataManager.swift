@@ -10,6 +10,7 @@ import Foundation
 import MobileCoreServices
 import Photos
 import Vision
+import SVGKit
 
 final class ImageDataManager: NSObject {
     
@@ -20,7 +21,7 @@ final class ImageDataManager: NSObject {
     
     // MARK: - Value
     // MARK: Private
-    private lazy var imageCache = NSCache<NSString, NSData>()
+    private lazy var imageCache = NSCache<NSString, UIImage>()
     
     private lazy var imageManager: PHCachingImageManager = {
         let imageManager = PHCachingImageManager()
@@ -50,7 +51,7 @@ final class ImageDataManager: NSObject {
     
     // MARK: - Function
     // MARK: Public
-    func download(url: ImageURL?, completion: ((_ url: ImageURL?, _ data: Data?) -> Void)? = nil) {
+    func download(url: ImageURL?, completion: ((_ url: ImageURL?, _ image: UIImage?) -> Void)? = nil) {
         guard let imageURL = url else {
             completion?(url, nil)
             return
@@ -58,16 +59,27 @@ final class ImageDataManager: NSObject {
         
         accessQueue.async {
             // If the cached image exist, return the image
-            if let cache = self.imageCache.object(forKey: imageURL.absoluteString) {
-                completion?(imageURL, cache as Data)
+            if let cachedImage = self.imageCache.object(forKey: imageURL.absoluteString) {
+                completion?(imageURL, cachedImage)
                 return
             }
             
             
             // Download image
             let task = self.downloadSession.dataTask(with: URLRequest(url: imageURL)) { (data, response, error) in
-                guard let data = data, error == nil else { return }
-                let image = (response?.url?.lastPathComponent.lowercased().hasSuffix("gif") == true ? GIF.convert(data: data) : data
+                guard let data = data, error == nil, let lastPathComponent = response?.url?.lastPathComponent.lowercased() else {
+                    completion?(imageURL, nil)
+                    return
+                }
+                
+                var image: UIImage? {
+                    if lastPathComponent.hasSuffix("svg") == true {
+                        return SVGKImage(data: data)?.uiImage
+                        
+                    } else {
+                        return lastPathComponent.hasSuffix("gif") == true ? GIF.convert(data: data) :  UIImage(data: data)
+                    }
+                }
                 
                 // Cache
                 self.accessQueue.async {
@@ -75,7 +87,7 @@ final class ImageDataManager: NSObject {
                         self.imageCache.setObject(image, forKey: urlString as NSString)
                     }
                     
-                    completion?(imageURL, data)
+                    completion?(imageURL, image)
                     self.downloadTasks.removeValue(forKey: imageURL)
                 }
             }

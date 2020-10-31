@@ -74,7 +74,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hNj-nm-hZ9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                    <rect key="frame" x="10" y="10" width="100" height="100"/>
                                                 </imageView>
                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="BRm-jt-Y77">
                                                     <rect key="frame" x="50" y="50" width="20" height="20"/>
@@ -82,10 +82,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="BRm-jt-Y77" firstAttribute="centerY" secondItem="8ik-m0-4f9" secondAttribute="centerY" id="1uS-c3-jvT"/>
-                                                <constraint firstItem="hNj-nm-hZ9" firstAttribute="top" secondItem="8ik-m0-4f9" secondAttribute="top" id="HT0-hg-CJc"/>
-                                                <constraint firstItem="hNj-nm-hZ9" firstAttribute="leading" secondItem="8ik-m0-4f9" secondAttribute="leading" id="Ku7-uq-5Ye"/>
-                                                <constraint firstAttribute="trailing" secondItem="hNj-nm-hZ9" secondAttribute="trailing" id="OWS-Cp-SK0"/>
-                                                <constraint firstAttribute="bottom" secondItem="hNj-nm-hZ9" secondAttribute="bottom" id="gwZ-cm-jOm"/>
+                                                <constraint firstItem="hNj-nm-hZ9" firstAttribute="top" secondItem="8ik-m0-4f9" secondAttribute="top" constant="10" id="HT0-hg-CJc"/>
+                                                <constraint firstItem="hNj-nm-hZ9" firstAttribute="leading" secondItem="8ik-m0-4f9" secondAttribute="leading" constant="10" id="Ku7-uq-5Ye"/>
+                                                <constraint firstAttribute="trailing" secondItem="hNj-nm-hZ9" secondAttribute="trailing" constant="10" id="OWS-Cp-SK0"/>
+                                                <constraint firstAttribute="bottom" secondItem="hNj-nm-hZ9" secondAttribute="bottom" constant="10" id="gwZ-cm-jOm"/>
                                                 <constraint firstItem="BRm-jt-Y77" firstAttribute="centerX" secondItem="8ik-m0-4f9" secondAttribute="centerX" id="x1H-jG-Vqv"/>
                                             </constraints>
                                         </collectionViewCellContentView>
@@ -93,7 +93,7 @@
                                         <size key="customSize" width="120" height="120"/>
                                         <connections>
                                             <outlet property="activityIndicatorView" destination="BRm-jt-Y77" id="bU9-ZH-sbC"/>
-                                            <outlet property="resourceImageView" destination="hNj-nm-hZ9" id="d2N-gc-Ul3"/>
+                                            <outlet property="imageView" destination="hNj-nm-hZ9" id="aIB-Zg-DLE"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
