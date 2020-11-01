@@ -70,6 +70,7 @@ final class EditorDataManager: NSObject {
         return true
     }
     
+    
     // MARK: Private
     private func requestRatios(completion: @escaping ((_ ratios: [CGSize]) -> Void) ) -> Bool {
         DispatchQueue.global().async {

@@ -34,6 +34,7 @@ final class DrawingDataManager: NSObject {
     }()
     
     
+    
     // MARK: - Function
     // MARK: Public
     func requestIncompleteDrawing() {

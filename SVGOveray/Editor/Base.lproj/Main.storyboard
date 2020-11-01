@@ -27,11 +27,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="q0C-Ii-SR5"/>
                                         </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="caX-mO-csE" appends="YES" id="Ygg-dE-Flf"/>
-                                            <outletCollection property="gestureRecognizers" destination="VUF-jZ-SHi" appends="YES" id="6mG-9p-nxG"/>
-                                            <outletCollection property="gestureRecognizers" destination="mlL-bm-eOW" appends="YES" id="ZQz-Tv-8vL"/>
-                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -39,6 +34,11 @@
                                     <constraint firstItem="tXk-er-Zmy" firstAttribute="centerY" secondItem="GPs-pQ-syp" secondAttribute="centerY" id="t9W-9i-sKI"/>
                                     <constraint firstAttribute="trailing" secondItem="tXk-er-Zmy" secondAttribute="trailing" id="yGd-vg-2Y8"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="caX-mO-csE" appends="YES" id="omc-hb-zBQ"/>
+                                    <outletCollection property="gestureRecognizers" destination="mlL-bm-eOW" appends="YES" id="5gz-1q-4zE"/>
+                                    <outletCollection property="gestureRecognizers" destination="VUF-jZ-SHi" appends="YES" id="3Gg-XZ-I3t"/>
+                                </connections>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJg-Gf-RKm">
                                 <rect key="frame" x="0.0" y="544" width="414" height="80"/>
@@ -156,6 +156,9 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="i8l-fT-boF">
                         <barButtonItem key="leftBarButtonItem" enabled="NO" style="done" id="rGG-17-Pyf">
                             <color key="tintColor" name="title"/>
+                            <connections>
+                                <segue destination="CMB-U0-M0O" kind="presentation" identifier="DrawSegue" modalPresentationStyle="fullScreen" id="aER-oH-9fa"/>
+                            </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem enabled="NO" style="done" systemItem="save" id="p3Z-Oq-8XF">
@@ -167,7 +170,7 @@
                             <barButtonItem image="gallery" style="done" id="MMh-pJ-hxQ">
                                 <color key="tintColor" name="title"/>
                                 <connections>
-                                    <segue destination="KRE-NE-eq7" kind="presentation" identifier="ImagePickerSegue" destinationCreationSelector="prepareImagePickerSegueWithCoder:sender:segueIdentifier:" modalPresentationStyle="fullScreen" id="aOd-Br-QbQ"/>
+                                    <segue destination="KRE-NE-eq7" kind="presentation" identifier="ImagePickerSegue" modalPresentationStyle="fullScreen" id="aOd-Br-QbQ"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -215,7 +218,15 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iB6-BX-F9C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2647.1014492753625" y="-185.49107142857142"/>
+            <point key="canvasLocation" x="2647" y="-147"/>
+        </scene>
+        <!--DrawingNavigationController-->
+        <scene sceneID="c0l-4H-r9o">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Drawing" referencedIdentifier="DrawingNavigationController" id="CMB-U0-M0O" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YMI-i9-gmZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2629" y="-234"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7eK-1v-tWp">

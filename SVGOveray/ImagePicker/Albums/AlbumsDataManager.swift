@@ -22,8 +22,6 @@ final class AlbumsDataManager: NSObject {
     private(set) var smartAlbums     = [PHFetchResult<PHAssetCollection>]()
     
     private(set) var albums = [Album]()
-    
-    //Cache
     private(set) var selectedAlbum: Album? = nil
     
     
@@ -110,6 +108,7 @@ final class AlbumsDataManager: NSObject {
         return true
     }
 }
+
 
 
 // MARK: PHPhotoLibraryChangeObserver

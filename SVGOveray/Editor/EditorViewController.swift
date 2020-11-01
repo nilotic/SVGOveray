@@ -59,6 +59,31 @@ final class EditorViewController: UIViewController {
         pencilBarButtonItem.isEnabled = true
     }
     
+    private func addSticker(image: UIImage?) -> Bool {
+        guard let image = image, let stickerView = UINib(nibName: StickerView.identifier, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? StickerView else { return false }
+        
+        // Center position
+        let size = CGSize(width: 240.0, height: 240.0)
+        stickerView.frame = CGRect(x: (contentView.frame.width - size.width) / 2.0, y: (contentView.frame.height - size.height) / 2.0, width: size.width, height: size.height)
+        
+        
+        // Delete Button
+        stickerView.deleteButton.addTarget(self, action: #selector(removeButtonTouchUpInside(_:)), for: .touchUpInside)
+        stickerView.deleteButton.tag = stickerView.hash
+        
+        
+        // Image
+        stickerView.imageView.image = image
+        
+        
+        // Cache
+        stickerViews[stickerView.hash] = stickerView
+        
+        
+        // Add
+        contentView.addSubview(stickerView)
+        return true
+    }
 
     
     // MARK: - Notification
@@ -135,7 +160,7 @@ final class EditorViewController: UIViewController {
         switch sender.state {
         case .began:
             guard let view = sender.view, let hash = (view.hitTest(sender.location(in: view), with: nil))?.hash, let stickerView = stickerViews[hash] else { return }
-            imageView.bringSubviewToFront(stickerView)
+            contentView.bringSubviewToFront(stickerView)
             
             // Cache
             self.stickerView = stickerView
@@ -143,7 +168,7 @@ final class EditorViewController: UIViewController {
             
         case .changed:
             guard let stickerView = stickerView else { return }
-            let translation = sender.translation(in: imageView)
+            let translation = sender.translation(in: contentView)
             let ratio = 2.0 - stickerView.transform.a
             
             stickerView.transform = stickerTrasnform.translatedBy(x: translation.x * ratio, y: translation.y * ratio)
@@ -151,19 +176,19 @@ final class EditorViewController: UIViewController {
             
             // Limit
             if stickerView.frame.origin.x < 0 {
-                stickerView.transform.tx = (stickerView.frame.width - imageView.frame.size.width) / 2.0
+                stickerView.transform.tx = (stickerView.frame.width - contentView.frame.size.width) / 2.0
             }
             
-            if imageView.frame.width < (stickerView.frame.origin.x + stickerView.frame.width - 15.0) {
-                stickerView.transform.tx = (imageView.frame.width - stickerView.frame.size.width) / 2.0 + 15.0
+            if contentView.frame.width < (stickerView.frame.origin.x + stickerView.frame.width - 15.0) {
+                stickerView.transform.tx = (contentView.frame.width - stickerView.frame.size.width) / 2.0 + 15.0
             }
             
             if stickerView.frame.origin.y <= 0 {
-                stickerView.transform.ty = (stickerView.frame.height - imageView.frame.height) / 2.0
+                stickerView.transform.ty = (stickerView.frame.height - contentView.frame.height) / 2.0
             }
             
-            if imageView.frame.height <= (stickerView.frame.origin.y + stickerView.frame.height - 15.0) {
-                stickerView.transform.ty = (imageView.frame.height - stickerView.frame.height) / 2.0  + 15.0
+            if contentView.frame.height <= (stickerView.frame.origin.y + stickerView.frame.height - 15.0) {
+                stickerView.transform.ty = (contentView.frame.height - stickerView.frame.height) / 2.0  + 15.0
             }
             
         case .ended:
@@ -178,7 +203,7 @@ final class EditorViewController: UIViewController {
         switch sender.state {
         case .began:
             guard let view = sender.view, let hash = (view.hitTest(sender.location(in: view), with: nil))?.hash, let stickerView = stickerViews[hash] else { return }
-            imageView.bringSubviewToFront(stickerView)
+            contentView.bringSubviewToFront(stickerView)
             
             // Cache
             self.stickerView = stickerView
@@ -200,7 +225,7 @@ final class EditorViewController: UIViewController {
         switch sender.state {
         case .began:
             guard let view = sender.view, let hash = (view.hitTest(sender.location(in: view), with: nil))?.hash, let stickerView = stickerViews[hash] else { return }
-            imageView.bringSubviewToFront(stickerView)
+            contentView.bringSubviewToFront(stickerView)
             
             // Cache
             self.stickerView = stickerView
@@ -305,29 +330,10 @@ extension EditorViewController: UICollectionViewDelegate {
             }
         
         case .resource:
-            guard let cell = collectionView.cellForItem(at: indexPath) as? ResourceCell,
-                  let stickerView = UINib(nibName: StickerView.identifier, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? StickerView else { return }
-            
-            // Center position
-            let size = CGSize(width: cell.frame.width * 2.0, height: cell.frame.height * 2.0)
-            stickerView.frame = CGRect(x: (imageView.frame.width - size.width) / 2.0, y: (imageView.frame.height - size.height) / 2.0, width: size.width, height: size.height)
-            
-            
-            // Image
-            stickerView.imageView.image = cell.imageView.image
-            
-            
-            // Delete Button
-            stickerView.deleteButton.addTarget(self, action: #selector(removeButtonTouchUpInside(_:)), for: .touchUpInside)
-            stickerView.deleteButton.tag = stickerView.hash
-            
-            
-            // Cache
-            stickerViews[stickerView.hash] = stickerView
-            
-            
-            // Add
-            contentView.addSubview(stickerView)
+            guard let cell = collectionView.cellForItem(at: indexPath) as? ResourceCell, addSticker(image: cell.imageView.image) else {
+                Toast.show(message: NSLocalizedString("Failed to add the sticker", comment: ""))
+                return
+            }
         }
     }
 }
@@ -404,12 +410,28 @@ extension EditorViewController: ImagePickerViewControllerDelegate {
         
 
 
+// MARK: - DrawingViewController Delegate
+@available(iOS 13, *)
+extension EditorViewController: DrawingViewControllerDelegate {
+
+    func didFinish(drawing: Drawing?) {
+        guard addSticker(image: drawing?.image) else {
+            Toast.show(message: NSLocalizedString("Failed to add a sticker", comment: ""))
+            return
+        }
+    }
+}
+
+
+
+
 // MARK: - Segue
 extension EditorViewController: SegueHandlerType {
     
     // MARK: Enum
     enum SegueIdentifier: String {
         case image = "ImagePickerSegue"
+        case draw  = "DrawSegue"
     }
     
     
@@ -429,6 +451,17 @@ extension EditorViewController: SegueHandlerType {
             
             viewController.dataManager.selectedAssets = dataManager.assets
             viewController.delegate = self
+            
+        case .draw:
+            guard #available(iOS 13.0, *) else { return }
+
+            guard let viewController = (segue.destination as? UINavigationController)?.children.first as? DrawingViewController else {
+                log(.error, "Failed to get a DrawingViewController.")
+                return
+            }
+            
+            viewController.dataManager.drawing = sender as? Drawing
+            viewController.delegate            = self
         }
     }
 }

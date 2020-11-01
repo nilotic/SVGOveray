@@ -27,7 +27,6 @@ final class AlbumsViewController: UIViewController {
     weak var delegate: AlbumsViewControllerDelegate? = nil
     
     
-    
     // MARK: Private
     private var titleAttributes: [NSAttributedString.Key : Any] {
         let paragraphStyle = NSMutableParagraphStyle()
