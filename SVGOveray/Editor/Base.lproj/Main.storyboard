@@ -19,39 +19,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Rh-yO-3QB">
+                            <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="tXk-er-Zmy">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="594"/>
-                                <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="6kq-LW-dqK">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="594"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="tXk-er-Zmy">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="594"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="tXk-er-Zmy" firstAttribute="leading" secondItem="6kq-LW-dqK" secondAttribute="leading" id="Km0-61-zjo"/>
-                                            <constraint firstItem="tXk-er-Zmy" firstAttribute="top" secondItem="6kq-LW-dqK" secondAttribute="top" id="cmV-mV-P1I"/>
-                                            <constraint firstAttribute="trailing" secondItem="tXk-er-Zmy" secondAttribute="trailing" id="iuy-A7-yHJ"/>
-                                            <constraint firstAttribute="bottom" secondItem="tXk-er-Zmy" secondAttribute="bottom" id="kmN-bP-SCf"/>
-                                        </constraints>
-                                        <viewLayoutGuide key="contentLayoutGuide" id="e0F-ox-Fvg"/>
-                                        <viewLayoutGuide key="frameLayoutGuide" id="CnG-Al-KFK"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="ROP-qA-UjI" id="c6m-ba-JuP"/>
-                                        </connections>
-                                    </scrollView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="6kq-LW-dqK" secondAttribute="bottom" id="8an-tY-j1p"/>
-                                    <constraint firstItem="tXk-er-Zmy" firstAttribute="width" secondItem="6Rh-yO-3QB" secondAttribute="width" id="Duk-TX-9Yo"/>
-                                    <constraint firstAttribute="trailing" secondItem="6kq-LW-dqK" secondAttribute="trailing" id="Fq5-Qi-Wle"/>
-                                    <constraint firstItem="tXk-er-Zmy" firstAttribute="height" secondItem="6Rh-yO-3QB" secondAttribute="height" id="M54-Ig-bxP"/>
-                                    <constraint firstItem="6kq-LW-dqK" firstAttribute="top" secondItem="6Rh-yO-3QB" secondAttribute="top" id="VGP-yZ-Fc8"/>
-                                    <constraint firstItem="6kq-LW-dqK" firstAttribute="leading" secondItem="6Rh-yO-3QB" secondAttribute="leading" id="WuQ-Rk-Uqj"/>
-                                </constraints>
-                            </view>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="caX-mO-csE" appends="YES" id="Ygg-dE-Flf"/>
+                                    <outletCollection property="gestureRecognizers" destination="mlL-bm-eOW" appends="YES" id="ZQz-Tv-8vL"/>
+                                    <outletCollection property="gestureRecognizers" destination="VUF-jZ-SHi" appends="YES" id="6mG-9p-nxG"/>
+                                </connections>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zcw-A9-j2Q">
                                 <rect key="frame" x="0.0" y="594" width="414" height="180"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -110,27 +85,19 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NkP-2Z-Rxy"/>
                         <constraints>
-                            <constraint firstItem="6Rh-yO-3QB" firstAttribute="top" secondItem="NkP-2Z-Rxy" secondAttribute="top" id="3GY-i0-nFS"/>
-                            <constraint firstItem="Zcw-A9-j2Q" firstAttribute="top" secondItem="6Rh-yO-3QB" secondAttribute="bottom" id="GHS-mV-BbG"/>
-                            <constraint firstItem="6Rh-yO-3QB" firstAttribute="leading" secondItem="NkP-2Z-Rxy" secondAttribute="leading" id="HUK-fQ-01M"/>
                             <constraint firstItem="NkP-2Z-Rxy" firstAttribute="bottom" secondItem="Zcw-A9-j2Q" secondAttribute="bottom" id="IlG-fv-Srz"/>
+                            <constraint firstItem="tXk-er-Zmy" firstAttribute="trailing" secondItem="NkP-2Z-Rxy" secondAttribute="trailing" id="JhG-cU-Gti"/>
                             <constraint firstItem="Zcw-A9-j2Q" firstAttribute="leading" secondItem="NkP-2Z-Rxy" secondAttribute="leading" id="Lnn-8p-1ck"/>
-                            <constraint firstItem="6Rh-yO-3QB" firstAttribute="trailing" secondItem="NkP-2Z-Rxy" secondAttribute="trailing" id="Shp-u6-jqv"/>
-                            <constraint firstItem="Zcw-A9-j2Q" firstAttribute="top" secondItem="6Rh-yO-3QB" secondAttribute="bottom" id="bnr-qC-5KS"/>
-                            <constraint firstItem="6Rh-yO-3QB" firstAttribute="leading" secondItem="NkP-2Z-Rxy" secondAttribute="leading" id="c55-b2-zBM"/>
                             <constraint firstItem="NkP-2Z-Rxy" firstAttribute="trailing" secondItem="Zcw-A9-j2Q" secondAttribute="trailing" id="elm-xD-TCe"/>
-                            <constraint firstItem="NkP-2Z-Rxy" firstAttribute="trailing" secondItem="6Rh-yO-3QB" secondAttribute="trailing" id="pmP-il-liA"/>
+                            <constraint firstItem="tXk-er-Zmy" firstAttribute="leading" secondItem="NkP-2Z-Rxy" secondAttribute="leading" id="idr-xs-dK1"/>
+                            <constraint firstItem="tXk-er-Zmy" firstAttribute="top" secondItem="NkP-2Z-Rxy" secondAttribute="top" id="jN4-qs-zdA"/>
+                            <constraint firstItem="Zcw-A9-j2Q" firstAttribute="top" secondItem="tXk-er-Zmy" secondAttribute="bottom" id="lzX-gM-fJp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="i8l-fT-boF">
-                        <leftBarButtonItems>
-                            <barButtonItem image="navibarIconBackClose" style="done" id="VYX-qh-9Rq">
-                                <color key="tintColor" name="title"/>
-                            </barButtonItem>
-                            <barButtonItem enabled="NO" style="done" id="rGG-17-Pyf">
-                                <color key="tintColor" name="title"/>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" style="done" id="rGG-17-Pyf">
+                            <color key="tintColor" name="title"/>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem style="done" systemItem="save" id="p3Z-Oq-8XF">
                                 <color key="tintColor" name="blue"/>
@@ -148,12 +115,29 @@
                     <connections>
                         <outlet property="activityIndicatorView" destination="wLK-ox-nga" id="8Wm-rL-SbY"/>
                         <outlet property="collectionView" destination="Zcw-A9-j2Q" id="tRv-DA-lQH"/>
-                        <outlet property="contentView" destination="6Rh-yO-3QB" id="Ycb-wm-ztk"/>
                         <outlet property="imageView" destination="tXk-er-Zmy" id="hf7-Q0-DSo"/>
                         <outlet property="pencilBarButtonItem" destination="rGG-17-Pyf" id="obi-8Q-twG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tax-Zl-jlY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer delaysTouchesBegan="YES" id="caX-mO-csE">
+                    <connections>
+                        <action selector="pinchGestureRecognizerAction:" destination="ROP-qA-UjI" id="2sT-h7-vcV"/>
+                        <outlet property="delegate" destination="ROP-qA-UjI" id="fmb-rZ-4Pk"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="mlL-bm-eOW">
+                    <connections>
+                        <action selector="panGestureRecognizerAction:" destination="ROP-qA-UjI" id="ksv-Db-Dk4"/>
+                        <outlet property="delegate" destination="ROP-qA-UjI" id="eGI-7l-rLC"/>
+                    </connections>
+                </panGestureRecognizer>
+                <rotationGestureRecognizer id="VUF-jZ-SHi">
+                    <connections>
+                        <action selector="rotationGestureRecognizerAction:" destination="ROP-qA-UjI" id="kKz-qf-g88"/>
+                        <outlet property="delegate" destination="ROP-qA-UjI" id="N8Z-XO-g5s"/>
+                    </connections>
+                </rotationGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1849.2753623188407" y="-185.49107142857142"/>
         </scene>
@@ -188,7 +172,6 @@
     </scenes>
     <resources>
         <image name="gallery" width="20" height="20"/>
-        <image name="navibarIconBackClose" width="28" height="28"/>
         <namedColor name="blue">
             <color red="0.20000000298023224" green="0.60399997234344482" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

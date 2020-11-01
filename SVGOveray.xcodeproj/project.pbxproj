@@ -144,6 +144,9 @@
 		B7994E91254D881300D57A56 /* StickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7994E8F254D881300D57A56 /* StickerView.xib */; };
 		B7994E99254D881C00D57A56 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994E98254D881C00D57A56 /* StickerView.swift */; };
 		B7994E9A254D881C00D57A56 /* StickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7994E98254D881C00D57A56 /* StickerView.swift */; };
+		B79EABE3254E6FB900F24F04 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79EABE2254E6FB900F24F04 /* FileType.swift */; };
+		B79EABE4254E6FB900F24F04 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79EABE2254E6FB900F24F04 /* FileType.swift */; };
+		B79EABE5254E6FB900F24F04 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79EABE2254E6FB900F24F04 /* FileType.swift */; };
 		C279FBB66091307F0258DD7E /* Pods_SVGOveray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC7CC4C75B169967165E236 /* Pods_SVGOveray.framework */; };
 /* End PBXBuildFile section */
 
@@ -236,6 +239,7 @@
 		B7994E5B254D70C500D57A56 /* StyleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleButton.swift; sourceTree = "<group>"; };
 		B7994E8F254D881300D57A56 /* StickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StickerView.xib; sourceTree = "<group>"; };
 		B7994E98254D881C00D57A56 /* StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
+		B79EABE2254E6FB900F24F04 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
 		D7057E0FC1B3962DC9A04DA0 /* Pods-SVGOverayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVGOverayUITests.release.xcconfig"; path = "Target Support Files/Pods-SVGOverayUITests/Pods-SVGOverayUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FCA8BB9CD7AC2B1CAFC4EBF7 /* Pods-SVGOverayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVGOverayTests.debug.xcconfig"; path = "Target Support Files/Pods-SVGOverayTests/Pods-SVGOverayTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -410,6 +414,7 @@
 			children = (
 				B7994C26254D1E7100D57A56 /* ImageURL.swift */,
 				B7994CAA254D226C00D57A56 /* ImageAsset.swift */,
+				B79EABE2254E6FB900F24F04 /* FileType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -864,6 +869,7 @@
 				B7994CAB254D226C00D57A56 /* ImageAsset.swift in Sources */,
 				B7994C55254D1F9700D57A56 /* HTTPMethod.swift in Sources */,
 				B7994D38254D27F000D57A56 /* AllPhotosAlbum.swift in Sources */,
+				B79EABE3254E6FB900F24F04 /* FileType.swift in Sources */,
 				B7994C71254D1FF400D57A56 /* Response.swift in Sources */,
 				B7994CF3254D269600D57A56 /* SelectionType.swift in Sources */,
 				B7994BB7254D1C8D00D57A56 /* AppDelegate.swift in Sources */,
@@ -927,6 +933,7 @@
 				B7994D0C254D272D00D57A56 /* AlbumsDataManager.swift in Sources */,
 				B7994C56254D1F9700D57A56 /* HTTPMethod.swift in Sources */,
 				B7994C95254D209400D57A56 /* Logger.swift in Sources */,
+				B79EABE4254E6FB900F24F04 /* FileType.swift in Sources */,
 				B7994D14254D273500D57A56 /* SelectionType.swift in Sources */,
 				B7994DAF254D303200D57A56 /* DrawingDataManager.swift in Sources */,
 				B7994C6B254D1FD900D57A56 /* HTTPStatusCode.swift in Sources */,
@@ -967,6 +974,7 @@
 				B7994D04254D272200D57A56 /* AlbumsDataManager.swift in Sources */,
 				B7994CAC254D226C00D57A56 /* ImageAsset.swift in Sources */,
 				B7994E5D254D70C500D57A56 /* StyleButton.swift in Sources */,
+				B79EABE5254E6FB900F24F04 /* FileType.swift in Sources */,
 				B7994C49254D1F6D00D57A56 /* API.swift in Sources */,
 				B7994CC2254D257E00D57A56 /* ImagePickerViewController.swift in Sources */,
 				B7994C73254D1FF400D57A56 /* Response.swift in Sources */,

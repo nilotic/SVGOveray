@@ -37,7 +37,7 @@ final class AlbumsViewController: UIViewController {
         paragraphStyle.maximumLineHeight = 20.0
         
         return [.font            : UIFont.systemFont(ofSize: 16.0),
-                .foregroundColor : UIColor(named: "textLightBlack") ?? #colorLiteral(red: 0.2039215686, green: 0.2274509804, blue: 0.2509803922, alpha: 1),
+                .foregroundColor : UIColor(named: "title") ?? #colorLiteral(red: 0.2039215686, green: 0.2274509804, blue: 0.2509803922, alpha: 1),
                 .paragraphStyle  : paragraphStyle]
     }
     
@@ -49,7 +49,7 @@ final class AlbumsViewController: UIViewController {
         paragraphStyle.maximumLineHeight = 18.0
         
         return [.font            : UIFont.systemFont(ofSize: 15.0),
-                .foregroundColor : UIColor(named: "gray400") ?? #colorLiteral(red: 0.5294117647, green: 0.5568627451, blue: 0.5882352941, alpha: 1),
+                .foregroundColor : UIColor(named: "subtitle") ?? #colorLiteral(red: 0.5294117647, green: 0.5568627451, blue: 0.5882352941, alpha: 1),
                 .paragraphStyle  : paragraphStyle]
     }
     

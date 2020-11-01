@@ -18,7 +18,7 @@ extension UserCollectionAlbum {
     var assets: PHFetchResult<PHAsset> {
         let options = PHFetchOptions()
         options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        options.predicate       = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
+        options.predicate       = NSPredicate(format: "(mediaType = %d || mediaType = %d", PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
         
         return PHAsset.fetchAssets(in: collection, options: options)
     }

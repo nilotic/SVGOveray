@@ -53,7 +53,7 @@ final class AlbumsDataManager: NSObject {
         DispatchQueue.global().async {
             let allPhotosOptions = PHFetchOptions()
             allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-            allPhotosOptions.predicate       = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
+            allPhotosOptions.predicate       = NSPredicate(format: "mediaType = %d || mediaType = %d", PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
             
             allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
             group.leave()
@@ -79,20 +79,22 @@ final class AlbumsDataManager: NSObject {
 
         group.notify(queue: .global()) {
             var albums = [Album]()
-            if 0 < allPhotos.count {
-                albums.append(AllPhotosAlbum(data: allPhotos))
+            let allPhotosAlbum = AllPhotosAlbum(data: allPhotos)
+            
+            if 0 < allPhotos.count, 0 < allPhotosAlbum.count {
+                albums.append(allPhotosAlbum)
             }
             
             if 0 < userCollections.count {
                 for index in 0..<userCollections.count {
-                    guard let album = UserCollectionAlbum(data: userCollections.object(at: index)) else { continue }
+                    guard let album = UserCollectionAlbum(data: userCollections.object(at: index)), 0 < album.assets.count else { continue }
                     albums.append(album)
                 }
             }
             
             if 0 < smartAlbums.count {
                 for index in 0..<smartAlbums.count {
-                    guard let data = smartAlbums[index].firstObject, let album = SmartAlbum(data: data) else { continue }
+                    guard let data = smartAlbums[index].firstObject, let album = SmartAlbum(data: data), 0 < album.assets.count else { continue }
                     albums.append(album)
                 }
             }
