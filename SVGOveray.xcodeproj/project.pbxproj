@@ -147,6 +147,10 @@
 		B79EABE3254E6FB900F24F04 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79EABE2254E6FB900F24F04 /* FileType.swift */; };
 		B79EABE4254E6FB900F24F04 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79EABE2254E6FB900F24F04 /* FileType.swift */; };
 		B79EABE5254E6FB900F24F04 /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79EABE2254E6FB900F24F04 /* FileType.swift */; };
+		B79EABEA254E70EA00F24F04 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79EABE9254E70EA00F24F04 /* UIImageViewExtension.swift */; };
+		B79EABEB254E70EA00F24F04 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79EABE9254E70EA00F24F04 /* UIImageViewExtension.swift */; };
+		B79EABF3254E7CEE00F24F04 /* RatioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79EABF2254E7CEE00F24F04 /* RatioCell.swift */; };
+		B79EABF4254E7CEE00F24F04 /* RatioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79EABF2254E7CEE00F24F04 /* RatioCell.swift */; };
 		C279FBB66091307F0258DD7E /* Pods_SVGOveray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC7CC4C75B169967165E236 /* Pods_SVGOveray.framework */; };
 /* End PBXBuildFile section */
 
@@ -240,6 +244,8 @@
 		B7994E8F254D881300D57A56 /* StickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StickerView.xib; sourceTree = "<group>"; };
 		B7994E98254D881C00D57A56 /* StickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerView.swift; sourceTree = "<group>"; };
 		B79EABE2254E6FB900F24F04 /* FileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
+		B79EABE9254E70EA00F24F04 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		B79EABF2254E7CEE00F24F04 /* RatioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatioCell.swift; sourceTree = "<group>"; };
 		D7057E0FC1B3962DC9A04DA0 /* Pods-SVGOverayUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVGOverayUITests.release.xcconfig"; path = "Target Support Files/Pods-SVGOverayUITests/Pods-SVGOverayUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FCA8BB9CD7AC2B1CAFC4EBF7 /* Pods-SVGOverayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SVGOverayTests.debug.xcconfig"; path = "Target Support Files/Pods-SVGOverayTests/Pods-SVGOverayTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -545,6 +551,7 @@
 			isa = PBXGroup;
 			children = (
 				B7994DC3254D30A900D57A56 /* UIViewExtension.swift */,
+				B79EABE9254E70EA00F24F04 /* UIImageViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -560,6 +567,7 @@
 		B7994DE5254D36AC00D57A56 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				B79EABF2254E7CEE00F24F04 /* RatioCell.swift */,
 				B7994DE6254D36D700D57A56 /* ResourceCell.swift */,
 			);
 			path = Cell;
@@ -867,6 +875,7 @@
 				B7994C9B254D20BE00D57A56 /* SegueHandlerType.swift in Sources */,
 				B7994C87254D205F00D57A56 /* NetworkManager.swift in Sources */,
 				B7994CAB254D226C00D57A56 /* ImageAsset.swift in Sources */,
+				B79EABF3254E7CEE00F24F04 /* RatioCell.swift in Sources */,
 				B7994C55254D1F9700D57A56 /* HTTPMethod.swift in Sources */,
 				B7994D38254D27F000D57A56 /* AllPhotosAlbum.swift in Sources */,
 				B79EABE3254E6FB900F24F04 /* FileType.swift in Sources */,
@@ -906,6 +915,7 @@
 				B7994DAA254D303000D57A56 /* DrawingDataManager.swift in Sources */,
 				B7994D55254D2B8600D57A56 /* LocaleManager.swift in Sources */,
 				B7994C0A254D1D6A00D57A56 /* Toast.swift in Sources */,
+				B79EABEA254E70EA00F24F04 /* UIImageViewExtension.swift in Sources */,
 				B7994D2C254D27D400D57A56 /* SmartAlbum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -972,6 +982,7 @@
 				B7994C0B254D1D6A00D57A56 /* Toast.swift in Sources */,
 				B7994CD3254D25DF00D57A56 /* CameraAssetCell.swift in Sources */,
 				B7994D04254D272200D57A56 /* AlbumsDataManager.swift in Sources */,
+				B79EABF4254E7CEE00F24F04 /* RatioCell.swift in Sources */,
 				B7994CAC254D226C00D57A56 /* ImageAsset.swift in Sources */,
 				B7994E5D254D70C500D57A56 /* StyleButton.swift in Sources */,
 				B79EABE5254E6FB900F24F04 /* FileType.swift in Sources */,
@@ -994,6 +1005,7 @@
 				B7994C81254D202300D57A56 /* NetworkError.swift in Sources */,
 				B7994C21254D1E5700D57A56 /* GIF.swift in Sources */,
 				B7994C28254D1E7100D57A56 /* ImageURL.swift in Sources */,
+				B79EABEB254E70EA00F24F04 /* UIImageViewExtension.swift in Sources */,
 				B7994DAB254D303000D57A56 /* DrawingDataManager.swift in Sources */,
 				B7994CEE254D267F00D57A56 /* PhotoAsset.swift in Sources */,
 				B7994CDC254D25FB00D57A56 /* PhotoAssetCell.swift in Sources */,

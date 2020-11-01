@@ -13,7 +13,7 @@
         <!--Image Picker View Controller-->
         <scene sceneID="NlX-A6-9qY">
             <objects>
-                <viewController storyboardIdentifier="ImagePickerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n7b-x2-s7T" customClass="ImagePickerViewController" customModule="SVGOveray" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImagePickerViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n7b-x2-s7T" customClass="ImagePickerViewController" customModule="SVGOveray" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nad-Ng-f1a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -334,12 +334,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YGM-5c-rZy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3417" y="1407"/>
+            <point key="canvasLocation" x="3419" y="1406"/>
         </scene>
     </scenes>
     <designables>
         <designable name="m5f-wi-zym">
-            <size key="intrinsicContentSize" width="43" height="33.5"/>
+            <size key="intrinsicContentSize" width="102.556640625" height="44.48046875"/>
         </designable>
     </designables>
     <resources>

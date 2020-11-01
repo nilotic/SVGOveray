@@ -12,9 +12,14 @@ final class EditorViewController: UIViewController {
 
     // MARK: - IBOutlet
     @IBOutlet private var pencilBarButtonItem: UIBarButtonItem!
+    @IBOutlet private var saveBarButtonItem: UIBarButtonItem!
+    @IBOutlet private var contentView: UIView!
     @IBOutlet private var imageView: UIImageView!
-    @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet private var ratioCollectionView: UICollectionView!
+    @IBOutlet private var resourceCollectionView: UICollectionView!
     @IBOutlet private var activityIndicatorView: UIActivityIndicatorView!
+    
+    @IBOutlet private var heightConstraint: NSLayoutConstraint!
     
     
     
@@ -36,7 +41,7 @@ final class EditorViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveResource(notification:)), name: EditorNotificationName.resource, object: nil)
         
-        guard dataManager.requestResource() == true else { return }
+        guard dataManager.request() == true else { return }
         activityIndicatorView.startAnimating()
     }
     
@@ -65,7 +70,26 @@ final class EditorViewController: UIViewController {
             return
         }
         
-        DispatchQueue.main.async { self.collectionView.reloadData() }
+        // Ratio
+        DispatchQueue.main.async {
+            self.ratioCollectionView.reloadData()
+            
+            // Selete the first ratio
+            guard self.dataManager.ratios.isEmpty == false else { return }
+            let indexPath = IndexPath(item: 0, section: 0)
+            self.ratioCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+            
+            
+            // Change the image ratio
+            let ratio = self.dataManager.ratios[indexPath.row]
+            self.heightConstraint.constant = self.imageView.frame.width * ratio.height / ratio.width
+            UIView.animate(withDuration: 0.38) {
+                self.view.layoutIfNeeded()
+            }
+        }
+        
+        // Resource
+        DispatchQueue.main.async { self.resourceCollectionView.reloadData() }
     }
     
     
@@ -74,6 +98,37 @@ final class EditorViewController: UIViewController {
     @IBAction private func removeButtonTouchUpInside(_ sender: UIButton) {
         stickerViews[sender.tag]?.removeFromSuperview()
         stickerViews.removeValue(forKey: sender.tag)
+    }
+    
+    @IBAction private func saveBarButtonItemAction(_ sender: UIBarButtonItem) {
+        activityIndicatorView.startAnimating()
+        
+        // Hidden stickerView deleteButtons
+        stickerViews.values.forEach { $0.deleteButton.isHidden = true }
+        
+        
+        // Convert the image data
+        guard let data = contentView.renderedImage?.cropped(frame: imageView.frame)?.pngData() else {
+            activityIndicatorView.stopAnimating()
+            Toast.show(message: NSLocalizedString("Failed to save the image", comment: ""))
+            return
+        }
+        
+        DispatchQueue.global().async {
+            // Save the image
+            PHPhotoLibrary.shared().performChanges({
+                let request = PHAssetCreationRequest.forAsset()
+                request.addResource(with: .photo, data: data, options: nil)
+                
+            }) { (success, error) in
+                DispatchQueue.main.async {
+                    self.activityIndicatorView.stopAnimating()
+                    self.stickerViews.values.forEach { $0.deleteButton.isHidden = false }
+                }
+                
+                Toast.show(message: error == nil ? NSLocalizedString("Saved the image.", comment: "") : error?.localizedDescription)
+            }
+        }
     }
     
     @IBAction private func panGestureRecognizerAction(_ sender: UIPanGestureRecognizer) {
@@ -170,21 +225,47 @@ final class EditorViewController: UIViewController {
 // MARK: DataSource
 extension EditorViewController: UICollectionViewDataSource {
     
+    private enum CollectionViewType: Int {
+        case ratio
+        case resource
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataManager.imageURLs.count
+        guard let type = CollectionViewType(rawValue: collectionView.tag) else { return 0 }
+        
+        switch type {
+        case .ratio:     return dataManager.ratios.count
+        case .resource:  return dataManager.imageURLs.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard indexPath.row < dataManager.imageURLs.count, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResourceCell.identifier, for: indexPath) as? ResourceCell else {
+        guard let type = CollectionViewType(rawValue: collectionView.tag) else {
             return collectionView.dequeueReusableCell(withReuseIdentifier: ResourceCell.identifier, for: indexPath)
         }
         
-        cell.update(data: dataManager.imageURLs[indexPath.row])
-        return cell
+        switch type {
+        case .ratio:
+            guard indexPath.row < dataManager.imageURLs.count, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RatioCell.identifier, for: indexPath) as? RatioCell else {
+                return collectionView.dequeueReusableCell(withReuseIdentifier: RatioCell.identifier, for: indexPath)
+            }
+            
+            cell.update(data: dataManager.ratios[indexPath.row])
+            return cell
+
+            
+        case .resource:
+            guard indexPath.row < dataManager.imageURLs.count, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResourceCell.identifier, for: indexPath) as? ResourceCell else {
+                return collectionView.dequeueReusableCell(withReuseIdentifier: ResourceCell.identifier, for: indexPath)
+            }
+            
+            cell.update(data: dataManager.imageURLs[indexPath.row])
+            return cell
+        }
     }
 }
 
@@ -193,7 +274,12 @@ extension EditorViewController: UICollectionViewDataSource {
 extension EditorViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 120.0, height: 120.0)
+        guard let type = CollectionViewType(rawValue: collectionView.tag) else { return .zero }
+        
+        switch type {
+        case .ratio:     return CGSize(width: 80.0, height: 40.0)
+        case .resource:  return CGSize(width: 100.0, height: 100.0)
+        }
     }
 }
 
@@ -202,29 +288,47 @@ extension EditorViewController: UICollectionViewDelegateFlowLayout {
 extension EditorViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ResourceCell,
-              let stickerView = UINib(nibName: StickerView.identifier, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? StickerView else { return }
+        guard let type = CollectionViewType(rawValue: collectionView.tag) else { return }
         
-        // Center position
-        let size = CGSize(width: cell.frame.width * 2.0, height: cell.frame.height * 2.0)
-        stickerView.frame = CGRect(x: (imageView.frame.width - size.width) / 2.0, y: (imageView.frame.height - size.height) / 2.0, width: size.width, height: size.height)
+        switch type {
+        case .ratio:
+            guard indexPath.row < dataManager.ratios.count else { return }
+            let ratio = dataManager.ratios[indexPath.row]
+            
+            // Focus animation
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            
+            // Change the image ratio
+            heightConstraint.constant = imageView.frame.width * ratio.height / ratio.width
+            UIView.animate(withDuration: 0.38) {
+                self.view.layoutIfNeeded()
+            }
         
-        
-        // Image
-        stickerView.imageView.image = cell.imageView.image
-        
-        
-        // Delete Button
-        stickerView.deleteButton.addTarget(self, action: #selector(removeButtonTouchUpInside(_:)), for: .touchUpInside)
-        stickerView.deleteButton.tag = stickerView.hash
-        
-        
-        // Cache
-        stickerViews[stickerView.hash] = stickerView
-        
-        
-        // Add
-        imageView.addSubview(stickerView)
+        case .resource:
+            guard let cell = collectionView.cellForItem(at: indexPath) as? ResourceCell,
+                  let stickerView = UINib(nibName: StickerView.identifier, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? StickerView else { return }
+            
+            // Center position
+            let size = CGSize(width: cell.frame.width * 2.0, height: cell.frame.height * 2.0)
+            stickerView.frame = CGRect(x: (imageView.frame.width - size.width) / 2.0, y: (imageView.frame.height - size.height) / 2.0, width: size.width, height: size.height)
+            
+            
+            // Image
+            stickerView.imageView.image = cell.imageView.image
+            
+            
+            // Delete Button
+            stickerView.deleteButton.addTarget(self, action: #selector(removeButtonTouchUpInside(_:)), for: .touchUpInside)
+            stickerView.deleteButton.tag = stickerView.hash
+            
+            
+            // Cache
+            stickerViews[stickerView.hash] = stickerView
+            
+            
+            // Add
+            contentView.addSubview(stickerView)
+        }
     }
 }
 
@@ -288,11 +392,12 @@ extension EditorViewController: ImagePickerViewControllerDelegate {
                 DispatchQueue.main.async {
                     self.activityIndicatorView.stopAnimating()
                     self.imageView.image = image
+                    self.saveBarButtonItem.isEnabled = true
                 }
             }
             
         default:
-            Toast.show(message: NSLocalizedString("Unsupported \(fileType)", comment: ""))
+            Toast.show(message: NSLocalizedString("The \(fileType) is unsupported type.", comment: ""))
         }
     }
 }
